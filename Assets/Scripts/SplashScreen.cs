@@ -11,6 +11,10 @@ public class SplashScreen : MonoBehaviour
     [SerializeField] int level;
 
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     // Start is called before the first frame update
     void Start()
     {
