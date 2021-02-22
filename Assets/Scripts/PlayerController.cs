@@ -6,6 +6,13 @@ using UnityStandardAssets.CrossPlatformInput;
 public class PlayerController : MonoBehaviour
 {
     [Tooltip ("m/s en frame")][SerializeField] float xSpeed = 4f;
+    float horizontalThrow, verticalThrow;
+    [SerializeField] float pitchX;
+    [SerializeField] float yawY;
+    [SerializeField] float rawZ;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -15,19 +22,36 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalThrow = CrossPlatformInputManager.GetAxis("Horizontal"); //captura el float horizontal
-        float verticalThrow = CrossPlatformInputManager.GetAxis("Vertical"); // captura el float vertical
+        ProccessTranslation();
+        ProcessRotation();
+    }
+
+    private void ProccessTranslation()
+    {
+        horizontalThrow = CrossPlatformInputManager.GetAxis("Horizontal"); //captura el float horizontal
+        verticalThrow = CrossPlatformInputManager.GetAxis("Vertical"); // captura el float vertical
 
         float xOffset = horizontalThrow * xSpeed * Time.deltaTime; //cuanto se mueve en m/s la nave sobre x
-        float yOffseet = verticalThrow * xSpeed * Time.deltaTime; // cuanto se mueve en m/s la nave sobre y
+        float yOffset = verticalThrow * xSpeed * Time.deltaTime; // cuanto se mueve en m/s la nave sobre y
 
         float rawNewXPos = xOffset + transform.localPosition.x; // tranforma la poss  de la nave en el eje X
-        float rawNewYPos = yOffseet + transform.localPosition.y; // tranforma la poss  de la nave en el eje y
+        float rawNewYPos = yOffset + transform.localPosition.y; // tranforma la poss  de la nave en el eje y
 
 
-        float xPos = Mathf.Clamp(rawNewXPos, -4, 4);
-        float yPos = Mathf.Clamp(rawNewYPos, -2, 2);
+        float xPos = Mathf.Clamp(rawNewXPos, -5, 5);
+        float yPos = Mathf.Clamp(rawNewYPos, -3, 3);
 
         transform.localPosition = new Vector3(xPos, yPos, transform.localPosition.z); // Mueve la nave
+    }
+
+    private void ProcessRotation()
+    {
+
+        float updatePitchX = pitchX * verticalThrow + transform.localRotation.x;
+        float updateYawY = yawY * horizontalThrow + transform.localRotation.y;
+        float updateRawZ = rawZ * horizontalThrow + transform.localRotation.z;
+
+        transform.localRotation = Quaternion.Euler(updatePitchX, updateYawY, updateRawZ);
+        
     }
 }
