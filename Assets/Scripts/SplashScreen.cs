@@ -13,18 +13,23 @@ public class SplashScreen : MonoBehaviour
 
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        int numMusicPlayers = FindObjectsOfType<SplashScreen>().Length;
+
+        //Condicion que protege que no se creen varios objetos entre scenes
+        if(numMusicPlayers > 1)
+        {
+            Destroy(gameObject);
+        } else
+        {
+            DontDestroyOnLoad(gameObject);
+        }
+
+        
     }
     // Start is called before the first frame update
     void Start()
     {
         Invoke("LoadFirstLevel", levelLoadDelay);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private void LoadFirstLevel()

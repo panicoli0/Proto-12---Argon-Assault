@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
 
-    [SerializeField] float LoadLevelDelay = 2f;
+    [SerializeField] float LoadLevelDelay = 1f;
     [SerializeField] GameObject explosionFX;
 
 
