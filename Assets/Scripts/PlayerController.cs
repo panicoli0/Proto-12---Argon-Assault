@@ -7,23 +7,37 @@ public class PlayerController : MonoBehaviour
 {
     [Tooltip ("m/s en frame")][SerializeField] float xSpeed = 4f;
     float horizontalThrow, verticalThrow;
+
+    [Header("General")]
     [SerializeField] float pitchX;
     [SerializeField] float yawY;
     [SerializeField] float rawZ;
 
+    [Header("Current Position")]
+    float xPos;
+    float yPos;
 
+    [SerializeField] bool isControlEnabled = true;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        ProccessTranslation();
-        ProcessRotation();
+        if(isControlEnabled)
+        {
+            ProccessTranslation();
+            ProcessRotation();
+        }
+        
+    }
+
+    public void StartDeadSecuence() //Escucha CollisionHandler.cs
+    {
+        print("CONTROLES FREEZADOS");
+        isControlEnabled = false;
+        
+        //Reset pos lo maneja CollisionHandler.cs
+
     }
 
     private void ProccessTranslation()
@@ -38,8 +52,8 @@ public class PlayerController : MonoBehaviour
         float rawNewYPos = yOffset + transform.localPosition.y; // tranforma la poss  de la nave en el eje y
 
 
-        float xPos = Mathf.Clamp(rawNewXPos, -5, 5);
-        float yPos = Mathf.Clamp(rawNewYPos, -3, 3);
+        xPos = Mathf.Clamp(rawNewXPos, -5, 5);
+        yPos = Mathf.Clamp(rawNewYPos, -3, 3);
 
         transform.localPosition = new Vector3(xPos, yPos, transform.localPosition.z); // Mueve la nave
     }

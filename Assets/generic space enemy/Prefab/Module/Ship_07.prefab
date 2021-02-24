@@ -11,12 +11,13 @@ GameObject:
   - component: {fileID: 4301618257826614}
   - component: {fileID: 33320748614889338}
   - component: {fileID: 23737017157804400}
+  - component: {fileID: 1165005679}
   m_Layer: 0
   m_Name: Ship_07
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4301618257826614
 Transform:
@@ -27,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 1330105141890764}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -7.346372}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 80.000046, y: 80.000015, z: 80.00008}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -77,3 +78,16 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!65 &1165005679
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330105141890764}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.3893856, y: 0.6508081, z: 0.10090975}
+  m_Center: {x: -0.00000011920929, y: 0.000000059604645, z: -0.00000006519258}
