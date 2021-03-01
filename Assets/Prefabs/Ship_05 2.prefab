@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2515562853257752903}
-  m_LocalRotation: {x: 0.11229094, y: -0.025740238, z: 0.050669156, w: 0.9920488}
+  m_LocalRotation: {x: 0.112293676, y: -0.025741257, z: 0.050668463, w: 0.9920485}
   m_LocalPosition: {x: 33.85, y: 0, z: 0}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children: []
@@ -92,3 +92,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosionFX: {fileID: 2012711648055498798, guid: 6c113efb62e60479a893873c54daeeff,
     type: 3}
+  parent: {fileID: 0}
+  scorePerHit: 12
