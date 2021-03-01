@@ -5,22 +5,25 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] GameObject explosionFX;
+    [SerializeField] Transform parent;
+
+
+    private void Start()
+    {
+        AddNonTriggerEnemysCollider();
+    }
+
+    private void AddNonTriggerEnemysCollider()
+    {
+        Collider EnemyBoxCollider = gameObject.AddComponent<BoxCollider>();
+        EnemyBoxCollider.isTrigger = false;
+    }
 
     private void OnParticleCollision(GameObject other)
     {
-        print("Le pegast a enemy" + other.gameObject);
-
-        //si le pegaste a un other gameObject
-            //destroy
-        if(other.gameObject)
-        {
-            explosionFX.SetActive(true);
-            Invoke("EnemyDeath", 0.4f);
-        }
-    }
-
-    private void EnemyDeath()
-    {
+        
+        GameObject fx = Instantiate(explosionFX, transform.position, Quaternion.identity);
+        fx.transform.parent = parent;
         Destroy(gameObject);
     }
 }
