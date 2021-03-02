@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
     //[SerializeField] int enemyPoint;
     ScoreBoard scoreBoard;
     public int scorePerHit = 12;
-
-
+    [SerializeField] float enemyHealth = 4f;
+    [SerializeField] float damagePerHit = 2f;
 
     private void Start()
     {
@@ -26,10 +26,18 @@ public class Enemy : MonoBehaviour
 
     public void OnParticleCollision(GameObject other)
     {
-        scoreBoard.ScoreHit(scorePerHit);
+        enemyHealth -= damagePerHit;
+        if (enemyHealth <= 1)
+        {
+            KillEnemy();
+        }
+    }
+
+    private void KillEnemy()
+    {
+        scoreBoard.ScoreHit(scorePerHit); //todo: cambiarlo a scorePerKill ?
         GameObject fx = Instantiate(explosionFX, transform.position, Quaternion.identity);
         fx.transform.parent = parent;
         Destroy(gameObject);
-        
     }
 }

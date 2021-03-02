@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
@@ -19,6 +20,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] bool isControlEnabled = true;
 
+    [SerializeField] GameObject[] gunsFX;
+
 
     // Update is called once per frame
     void Update()
@@ -27,8 +30,37 @@ public class PlayerController : MonoBehaviour
         {
             ProccessTranslation();
             ProcessRotation();
+            ProcessFiring();
         }
         
+    }
+
+    void ProcessFiring()
+    {
+        
+        //si presionas la spaceBar que dispare
+        if (CrossPlatformInputManager.GetButton("Fire1"))
+        {
+            ActivateGuns();
+        } else
+        {
+            DeActivateGuns();
+        }
+    }
+   
+    private void ActivateGuns()
+    {
+        foreach(GameObject gun in gunsFX)
+        {
+            gun.SetActive(true);        }
+    }
+
+    private void DeActivateGuns()
+    {
+        foreach(GameObject gun in gunsFX)
+        {
+            gun.SetActive(false);
+        }
     }
 
     public void StartDeadSecuence() //Escucha CollisionHandler.cs
@@ -68,4 +100,21 @@ public class PlayerController : MonoBehaviour
         transform.localRotation = Quaternion.Euler(updatePitchX, updateYawY, updateRawZ);
         
     }
+
+    //void ShootSecuence()
+    //{
+    //    if (Input.GetKeyDown("space"))
+    //    {
+    //        foreach(GameObject gun in gunsFX)
+    //        {
+    //            gun.SetActive(true);
+    //        }       
+    //    } else
+    //    {
+    //        foreach (GameObject gun in gunsFX)
+    //        {
+    //            gun.SetActive(false);
+    //        }
+    //    }
+    //} //Segunda opcion
 }
