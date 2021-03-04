@@ -95,4 +95,5 @@ MonoBehaviour:
   parent: {fileID: 0}
   scorePerHit: 12
   enemyHealth: 8
-  damagePerHit: 2
+  damagePerHit: 6
+  enemyDestroyed: {fileID: 0}

@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 7396816445075232174}
   - component: {fileID: 6729861415445036439}
   - component: {fileID: 6875269306457486375}
+  - component: {fileID: 1495077746}
+  - component: {fileID: 1495077745}
   m_Layer: 0
   m_Name: Ship_05 3
   m_TagString: Untagged
@@ -94,3 +96,44 @@ MonoBehaviour:
     type: 3}
   parent: {fileID: 0}
   scorePerHit: 12
+  enemyHealth: 4
+  damagePerHit: 6
+  enemyDestroyed: {fileID: 0}
+--- !u!320 &1495077746
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5385833634341853655}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 0}
+  m_InitialState: 1
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: 0}
+    value: {fileID: 1495077745}
+  m_ExposedReferences:
+    m_References: []
+--- !u!95 &1495077745
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5385833634341853655}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

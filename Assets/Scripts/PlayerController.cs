@@ -41,27 +41,29 @@ public class PlayerController : MonoBehaviour
         //si presionas la spaceBar que dispare
         if (CrossPlatformInputManager.GetButton("Fire1"))
         {
-            ActivateGuns();
+            SetGunsActive(true);
         } else
         {
-            DeActivateGuns();
+            SetGunsActive(false);
         }
     }
    
-    private void ActivateGuns()
+    private void SetGunsActive(bool isActive)
     {
         foreach(GameObject gun in gunsFX)
         {
-            gun.SetActive(true);        }
-    }
-
-    private void DeActivateGuns()
-    {
-        foreach(GameObject gun in gunsFX)
-        {
-            gun.SetActive(false);
+            var emissionModule = gun.GetComponent<ParticleSystem>().emission; //Guardo en una local var el Module emission de Particle System
+            emissionModule.enabled = isActive; // prende o apaga el modulo de emision segun spacebar 
         }
     }
+    
+    //private void DeActivateGuns()
+    //{
+    //    foreach(GameObject gun in gunsFX)
+    //    {
+    //        gun.SetActive(false);
+    //    }
+    //}
 
     public void StartDeadSecuence() //Escucha CollisionHandler.cs
     {

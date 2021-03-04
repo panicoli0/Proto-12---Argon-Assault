@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -12,10 +14,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] float enemyHealth = 4f;
     [SerializeField] float damagePerHit = 2f;
 
+    //[SerializeField] TextMeshProUGUI enemyDestroyed;
+
     private void Start()
     {
         AddNonTriggerEnemysCollider();
         scoreBoard = FindObjectOfType<ScoreBoard>();
+        //enemyDestroyed = FindObjectOfType<TextMeshProUGUI>();
     }
 
     private void AddNonTriggerEnemysCollider()
@@ -39,5 +44,6 @@ public class Enemy : MonoBehaviour
         GameObject fx = Instantiate(explosionFX, transform.position, Quaternion.identity);
         fx.transform.parent = parent;
         Destroy(gameObject);
+        //enemyDestroyed.text = "Enemy Destroyed: " + gameObject.name;
     }
 }

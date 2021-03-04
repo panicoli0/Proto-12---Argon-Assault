@@ -93,4 +93,7 @@ MonoBehaviour:
   explosionFX: {fileID: 2012711648055498798, guid: 6c113efb62e60479a893873c54daeeff,
     type: 3}
   parent: {fileID: 0}
-  scorePerHit: 12
+  scorePerHit: 50
+  enemyHealth: 4
+  damagePerHit: 6
+  enemyDestroyed: {fileID: 0}
